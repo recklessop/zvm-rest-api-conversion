@@ -14,12 +14,16 @@ headers = {
 
 # Create session and authenticate with ZVM
 session = requests.Session()
+
+#prepare data object with credentials
 auth_data = {
     "AuthenticationMethod": "UserCredentials",
     "Username": zvm_username,
     "Password": zvm_password
 }
-auth_response = session.post(zvm_url + "/session/add", headers=headers, data=json.dumps(auth_data))
+
+# Use zerto session api to get an x-server-session token
+auth_response = session.post(zvm_url + "/session/add", headers=headers, data=json.dumps(auth_data), verify=False)
 if auth_response.status_code != 200:
     print("Authentication failed with status code: {}".format(auth_response.status_code))
     exit()
@@ -27,15 +31,14 @@ else:
     print("Successfully authenticated with ZVM.")
 
 # Get list of VPGs
-vpg_response = session.get(zvm_url + "/vpgs", headers=headers)
+vpg_response = session.get(zvm_url + "/vpgs", headers=headers, verify=False)
 if vpg_response.status_code != 200:
     print("Failed to retrieve VPGs with status code: {}".format(vpg_response.status_code))
     exit()
 
-vpgs = json.loads(vpg_response.content)["Vpgs"]
-print("Found {} VPGs:".format(len(vpgs)))
+vpgs = json.loads(vpg_response.content)
 for vpg in vpgs:
-    print("- {}".format(vpg["VpgName"]))
+    print(vpg)
 
 # Logout of session
 session.delete(zvm_url + "/session", headers=headers)
