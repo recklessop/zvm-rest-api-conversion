@@ -4,8 +4,8 @@
 
 This repository contains examples of using the Zerto REST API to interact with a Zerto Virtual Manager (ZVM) instance. There are two branches in this repository:
 
-- `windows-zvm`: Contains an example script (`get-vpgs.py`) for connecting to a Windows-based ZVM instance and retrieving a list of Virtual Protection Groups (VPGs).
-- `linux-zvm`: Contains an updated example script (`get-vpgs.py`) that uses Keycloak-based authentication to connect to a Linux-based ZVM instance running Zerto version 9.7 and retrieve a list of VPGs.
+- `[windows-zvm](https://github.com/recklessop/zvm-rest-api-conversion/tree/windows-zvm)`: Contains an example script (`get-vpgs.py`) for connecting to a Windows-based ZVM instance and retrieving a list of Virtual Protection Groups (VPGs). 
+- `[linux-zvm](https://github.com/recklessop/zvm-rest-api-conversion/tree/linux-zvm)`: Contains an updated example script (`get-vpgs.py`) that uses Keycloak-based authentication to connect to a Linux-based ZVM instance running Zerto version 9.7 and retrieve a list of VPGs.
 - `main`: Contains the same updated example script as the `linux-zvm` branch, which is compatible with a Linux-based ZVM instance running Zerto version 9.7.
 
 ## Usage
